@@ -67,3 +67,5 @@ export const generatePagination = (currentPage: number, totalPages: number) => {
     totalPages,
   ];
 };
+
+export const delay = (ms = 3000) => new Promise((resolve) => setTimeout(resolve, ms));
