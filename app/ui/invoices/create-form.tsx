@@ -1,12 +1,7 @@
 'use client';
 import { CustomerField } from '@/app/lib/definitions';
 import Link from 'next/link';
-import {
-  CheckIcon,
-  ClockIcon,
-  CurrencyDollarIcon,
-  UserCircleIcon,
-} from '@heroicons/react/24/outline';
+import { CheckIcon, ClockIcon, CurrencyDollarIcon, UserCircleIcon } from '@heroicons/react/24/outline';
 import { Button } from '@/app/ui/button';
 import { createInvoice, State } from '@/app/lib/actions';
 import { useActionState } from 'react';
@@ -14,8 +9,6 @@ import { useActionState } from 'react';
 export default function Form({ customers }: { customers: CustomerField[] }) {
   const initialState: State = { message: null, errors: {} };
   const [state, formAction, pending] = useActionState<State, FormData>(createInvoice, initialState);
-
-  console.log('>', { state });
 
   return (
     <form action={formAction} aria-describedby="form-message">
@@ -85,9 +78,7 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
 
         {/* Invoice Status */}
         <fieldset>
-          <legend className="mb-2 block text-sm font-medium">
-            Set the invoice status
-          </legend>
+          <legend className="mb-2 block text-sm font-medium">Set the invoice status</legend>
           <div className="rounded-md border border-gray-200 bg-white px-[14px] py-3">
             <div className="flex gap-4">
               <div className="flex items-center">
@@ -134,10 +125,7 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
           </div>
         </fieldset>
         <div id="form-message" aria-live="polite" aria-atomic="true">
-          {state.message &&
-            <p className="mt-2 text-sm text-red-500">
-              {state.message}
-            </p>}
+          {state.message && <p className="mt-2 text-sm text-red-500">{state.message}</p>}
         </div>
       </div>
       <div className="mt-6 flex justify-end gap-4">
@@ -147,7 +135,9 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
         >
           Cancel
         </Link>
-        <Button type="submit" disabled={pending}>Create Invoice</Button>
+        <Button type="submit" disabled={pending}>
+          Create Invoice
+        </Button>
       </div>
     </form>
   );
